@@ -17,7 +17,7 @@ def markdown_to_html(argv):
         exit(1)
 
     if isfile(argv[1]) is False:
-        print("Missing" + argv[1], file=sys.stderr)
+        print("Missing " + argv[1], file=sys.stderr)
         exit(1)
 
     exit(0)
