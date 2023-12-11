@@ -33,4 +33,5 @@ def markdown_to_html(argv):
 
 
 if __name__ == "__main__":
+    """main"""
     markdown_to_html(sys.argv)
