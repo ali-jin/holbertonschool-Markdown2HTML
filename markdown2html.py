@@ -30,10 +30,10 @@ def markdown_to_html(argv):
     with open(argv[1], 'r') as file:
         markdown_string = file.read()
 
-    htmk_string = markdown.markdown(markdown_string)
+    html_string = markdown.markdown(markdown_string)
 
     with open(argv[2], 'w') as new_file:
-        new_file.write(htmk_string)
+        new_file.write(html_string)
 
 
 if __name__ == "__main__":
