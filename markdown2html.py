@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """scritp that convert markdown to html"""
+
+
 from os.path import isfile
 import sys
 import markdown
@@ -39,6 +41,5 @@ def markdown_to_html(argv):
 
 
 if __name__ == "__main__":
-    """main"""
     verify_file_exist(sys.argv)
     markdown_to_html(sys.argv)
