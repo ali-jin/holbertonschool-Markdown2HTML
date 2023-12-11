@@ -5,8 +5,8 @@ import sys
 import markdown
 
 
-def markdown_to_html(argv):
-    """Convert markdown in file into html
+def verify_file_exist(argv):
+    """Verify if file exist
 
     argv (str): 2 arguments:
                         - first is the input file name
@@ -21,6 +21,14 @@ def markdown_to_html(argv):
         print("Missing " + argv[1], file=sys.stderr)
         exit(1)
 
+
+def markdown_to_html(argv):
+    """Convert markdown in file into html
+
+    argv (str): 2 arguments:
+                        - first is the input file name
+                        - the second is ouput file name
+    """
     with open(argv[1], 'r') as file:
         markdown_string = file.read()
 
@@ -29,9 +37,8 @@ def markdown_to_html(argv):
     with open(argv[2], 'w') as new_file:
         new_file.write(htmk_string)
 
-    exit(0)
-
 
 if __name__ == "__main__":
     """main"""
+    verify_file_exist(sys.argv)
     markdown_to_html(sys.argv)
