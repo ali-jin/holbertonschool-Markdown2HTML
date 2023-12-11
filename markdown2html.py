@@ -2,6 +2,7 @@
 """scritp that convert markdown to html"""
 from os.path import isfile
 import sys
+import markdown
 
 
 def markdown_to_html(argv):
@@ -19,6 +20,14 @@ def markdown_to_html(argv):
     if isfile(argv[1]) is False:
         print("Missing " + argv[1], file=sys.stderr)
         exit(1)
+
+    with open(argv[1], 'r') as file:
+        markdown_string = file.read()
+
+    htmk_string = markdown.markdown(markdown_string)
+
+    with open(argv[2], 'w') as new_file:
+        new_file.write(htmk_string)
 
     exit(0)
 
