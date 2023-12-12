@@ -41,7 +41,9 @@ def markdown_to_html(argv):
 
 
 def main():
-    """_summary_
+    """Convert the markdown in file into HTML in a new file
+
+    Verify if file exist and if there are enough arguments
     """
     verify_file_exist(sys.argv)
     markdown_to_html(sys.argv)
