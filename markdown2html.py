@@ -4,7 +4,6 @@ Markdown to HTML Converter
 """
 from os.path import isfile
 import sys
-import markdown
 
 
 def verify_file_exist(argv):
@@ -18,14 +17,14 @@ def verify_file_exist(argv):
         exit(1)
 
 
-def markdown_to_html(argv):
-    with open(argv[1], 'r') as file:
-        markdown_string = file.read()
+# def markdown_to_html(argv):
+#     with open(argv[1], 'r') as file:
+#         markdown_string = file.read()
 
-    html_string = markdown.markdown(markdown_string)
+#     html_string = markdown.markdown(markdown_string)
 
-    with open(argv[2], 'w') as new_file:
-        new_file.write(html_string)
+#     with open(argv[2], 'w') as new_file:
+#         new_file.write(html_string)
 
 
 def main():
