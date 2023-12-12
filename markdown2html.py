@@ -46,6 +46,27 @@ def markdown_ul_to_html(lines):
     return lines_list
 
 
+def markdown_ol_to_html(lines):
+    lines_list = []
+    is_present = False
+
+    for line in lines:
+        if line.startswith('* '):
+            converted_line = f'<li>{line[2:].strip()}</li>\n'
+            if is_present is False:
+                lines_list.append('<ol>\n')
+                is_present = True
+            lines_list.append(converted_line)
+        else:
+            if is_present is True:
+                lines_list.append('</ol>\n')
+                is_present = False
+            lines_list.append(line)
+    if is_present is True:
+        lines_list.append('</ol>\n')
+    return lines_list
+
+
 def main():
     """Convert the markdown in file into HTML in a new file
 
@@ -63,6 +84,7 @@ def main():
         lines = file.readlines()
         html_lines = markdown_heading_to_html(lines)
         html_lines = markdown_ul_to_html(html_lines)
+        html_lines = markdown_ol_to_html(html_lines)
         new_file.writelines(html_lines)
 
     exit(0)
