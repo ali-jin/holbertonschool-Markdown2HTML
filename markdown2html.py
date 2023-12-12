@@ -18,7 +18,7 @@ def verify_file_exist(argv):
 def markdown_to_html(line):
     for i in range(6, 0, -1):
         if line.startswith('#' * i):
-            return f'<h{i}>{line[i+1:].strip()}<h{i}>\n'
+            return f'<h{i}>{line[i+1:].strip()}</h{i}>\n'
     return line
 
 
