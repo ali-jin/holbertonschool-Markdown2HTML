@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 Markdown to HTML Converter
-Task 1: convert heading
 """
 from os.path import isfile
 import sys
