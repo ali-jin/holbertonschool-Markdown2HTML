@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 """
 Markdown to HTML Converter
+task 0
 """
+
 from os.path import isfile
 import sys
 
@@ -17,14 +19,10 @@ def verify_file_exist(argv):
         exit(1)
 
 
-# def markdown_to_html(argv):
-#     with open(argv[1], 'r') as file:
-#         markdown_string = file.read()
-
-#     html_string = markdown.markdown(markdown_string)
-
-#     with open(argv[2], 'w') as new_file:
-#         new_file.write(html_string)
+def markdown_to_html(line):
+    for i in range(6, 0, -1):
+        if line.startswith('#' * i):
+            return f'<h{i}>{line}'
 
 
 def main():
