@@ -9,8 +9,7 @@ import markdown
 
 
 def verify_file_exist(argv):
-    """
-    Verify if file exist
+    """Verify if file exist
 
     Args:
         argv[1] (str): file name
@@ -27,8 +26,7 @@ def verify_file_exist(argv):
 
 
 def markdown_to_html(argv):
-    """
-    Convert markdown in file into html
+    """Convert markdown in file into html
 
     Args:
         argv[1] (str): file name
@@ -43,6 +41,13 @@ def markdown_to_html(argv):
         new_file.write(html_string)
 
 
-if __name__ == "__main__":
+def main():
+    """_summary_
+    """
     verify_file_exist(sys.argv)
     markdown_to_html(sys.argv)
+    exit(0)
+
+
+if __name__ == "__main__":
+    main()
