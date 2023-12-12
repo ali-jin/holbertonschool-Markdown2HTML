@@ -9,7 +9,8 @@ import markdown
 
 
 def verify_file_exist(argv):
-    """Verify if file exist
+    """
+    Verify if file exist
 
     argv (str): 2 arguments string
     """
@@ -24,7 +25,8 @@ def verify_file_exist(argv):
 
 
 def markdown_to_html(argv):
-    """Convert markdown in file into html
+    """
+    Convert markdown in file into html
 
     argv (str): 2 arguments string
     """
