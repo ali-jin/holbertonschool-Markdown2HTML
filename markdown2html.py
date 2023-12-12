@@ -14,15 +14,12 @@ def verify_file_exist(argv):
               file=sys.stderr)
         exit(1)
 
-    if isfile(argv[1]) is False:
-        print("Missing " + argv[1], file=sys.stderr)
-        exit(1)
-
 
 def markdown_to_html(line):
     for i in range(6, 0, -1):
         if line.startswith('#' * i):
             return f'<h{i}>{line[i+1:].strip()}<h{i}>\n'
+    return line
 
 
 def main():
@@ -32,7 +29,13 @@ def main():
     """
     verify_file_exist(sys.argv)
 
-    with open(sys.argv[1], 'r') as file, open(sys.argv[2], 'w') as new_file:
+    markdown_file = sys.argv[1]
+
+    if isfile(markdown_file) is False:
+        print("Missing " + markdown_file, file=sys.stderr)
+        exit(1)
+
+    with open(markdown_file, 'r') as file, open(sys.argv[2], 'w') as new_file:
         for line in file:
             html_string = markdown_to_html(line)
             new_file.write(html_string)
