@@ -12,7 +12,9 @@ def verify_file_exist(argv):
     """
     Verify if file exist
 
-    argv (str): 2 arguments string
+    Args:
+        argv[1] (str): file name
+        argv[2] (str): output file name
     """
     if len(argv) < 3:
         print("Usage: ./markdown2html.py README.md README.html",
@@ -28,7 +30,9 @@ def markdown_to_html(argv):
     """
     Convert markdown in file into html
 
-    argv (str): 2 arguments string
+    Args:
+        argv[1] (str): file name
+        argv[2] (str): output file name
     """
     with open(argv[1], 'r') as file:
         markdown_string = file.read()
