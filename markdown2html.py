@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-"""scritp that convert markdown to html"""
-
-
+"""
+Markdown to HTML Converter
+Task 1: convert heading
+"""
 from os.path import isfile
 import sys
 import markdown
