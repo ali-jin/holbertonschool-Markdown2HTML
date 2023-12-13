@@ -67,6 +67,25 @@ def markdown_ol_to_html(lines):
     return lines_list
 
 
+def markdown_paragraph_to_html(lines):
+    markdown_list = ('<h', '<ul>', '<li>', '<ol>', '</ul>', '</ol>')
+    lines_list = []
+    text_list = []
+    for line in lines:
+        if not line.lstrip().startswith(markdown_list) and line.strip() != '':
+            text_list.append(line.strip())
+        else:
+            if text_list:
+                lines_list.append('<p>\n' +
+                                  '\n<br/>\n'.join(text_list) + '\n</p>\n')
+                text_list = []
+            if line.strip() != '':
+                lines_list.append(line)
+    if text_list:
+        lines_list.append('<p>\n' + '\n<br/>\n'.join(text_list) + '\n</p>\n')
+    return lines_list
+
+
 def main():
     """Convert the markdown in file into HTML in a new file
 
@@ -85,6 +104,7 @@ def main():
         html_lines = markdown_heading_to_html(lines)
         html_lines = markdown_ul_to_html(html_lines)
         html_lines = markdown_ol_to_html(html_lines)
+        html_lines = markdown_paragraph_to_html(html_lines)
         new_file.writelines(html_lines)
 
     exit(0)
