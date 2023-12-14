@@ -5,6 +5,7 @@ Markdown to HTML Converter
 
 from os.path import isfile
 import sys
+import re
 
 
 def verify_file_exist(argv):
@@ -86,6 +87,23 @@ def markdown_paragraph_to_html(lines):
     return lines_list
 
 
+def markdown_bold_to_html_b(lines):
+    lines_list = []
+    bold = r'\*\*(.+?)\*\*'
+    emphasis = r'\_\_(.+?)\_\_'
+    for line in lines:
+        if '**' in line or '__' in line:
+            converted_line = re.sub(bold, r'<b>\1</b>', line.strip())
+            converted_line = re.sub(emphasis, r'<em>\1</em>', converted_line)
+            lines_list.append(f'{converted_line}\n')
+        elif '__' in line:
+            converted_line = re.sub(emphasis, r'<em>\1</em>', line.strip())
+            lines_list.append(f'{converted_line}\n')
+        else:
+            lines_list.append(f'{line.strip()}\n')
+    return lines_list
+
+
 def main():
     """Convert the markdown in file into HTML in a new file
 
@@ -105,6 +123,7 @@ def main():
         html_lines = markdown_ul_to_html(html_lines)
         html_lines = markdown_ol_to_html(html_lines)
         html_lines = markdown_paragraph_to_html(html_lines)
+        html_lines = markdown_bold_to_html_b(html_lines)
         new_file.writelines(html_lines)
 
     exit(0)
